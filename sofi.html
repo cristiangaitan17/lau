@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>📸 Laura Sofía · Nuestros recuerdos con amor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(145deg, #fff0f5 0%, #ffe4ed 40%, #ffd9e8 100%);
+            color: #4a2b3a;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 245, 250, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 70px 70px 70px 30px;
+            box-shadow: 0 20px 35px rgba(255, 105, 180, 0.15);
+        }
+
+        .hero h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 3rem;
+            background: linear-gradient(135deg, #c44569, #f06a6a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero .tagline {
+            font-size: 1.3rem;
+            font-weight: 500;
+            background: rgba(255, 215, 225, 0.8);
+            display: inline-block;
+            padding: 0.4rem 1.8rem;
+            border-radius: 50px;
+            margin: 0.8rem 0;
+            color: #b13e5c;
+        }
+
+        .hero .ubicacion {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #7f4f6b;
+            background: #fff0f5cc;
+            display: inline-block;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+        }
+
+        .arg-time-card {
+            background: rgba(255, 240, 245, 0.9);
+            border-radius: 60px;
+            padding: 0.6rem 1.2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            margin-top: 15px;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.05);
+        }
+
+        /* 3 tarjetas de medicina */
+        .frases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .card {
+            background: rgba(255, 248, 251, 0.9);
+            backdrop-filter: blur(5px);
+            border-radius: 40px;
+            padding: 1.8rem 1.4rem;
+            transition: all 0.35s ease;
+            box-shadow: 0 12px 25px rgba(157, 78, 110, 0.12);
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .card i {
+            font-size: 2.6rem;
+            color: #e84393;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: #b13e5c;
+        }
+
+        /* Frase aleatoria */
+        .frase-dinamica {
+            background: linear-gradient(120deg, #ffeef4, #ffe2ec);
+            border-radius: 45px;
+            padding: 1.8rem;
+            text-align: center;
+            margin: 2rem 0 3rem;
+        }
+
+        .frase-box {
+            font-size: 1.25rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 50px;
+            margin: 1rem 0;
+            font-weight: 500;
+            border-left: 8px solid #ff9eb5;
+        }
+
+        .btn-amor {
+            background: #ff86a3;
+            border: none;
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            transition: 0.25s;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+
+        .btn-amor:hover {
+            background: #e84393;
+            transform: scale(1.02);
+        }
+
+        /* GALERÍA DE FOTOS estilo Instagram */
+        .instagram-gallery {
+            margin: 3rem 0;
+        }
+
+        .instagram-gallery h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: #c44569;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .gallery-sub {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #9d5e78;
+        }
+
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .post-card {
+            background: #fffafc;
+            border-radius: 32px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: transform 0.2s ease;
+            border: 1px solid #ffe0e8;
+        }
+
+        .post-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .post-img {
+            width: 100%;
+            height: 500px;
+            background: #fbd5e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .post-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .img-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            background: #fce4ec;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .img-placeholder i {
+            font-size: 4rem;
+            color: #c44569;
+            margin-bottom: 12px;
+        }
+
+        .img-placeholder span {
+            font-size: 12px;
+            background: white;
+            padding: 4px 12px;
+            border-radius: 40px;
+        }
+
+        .post-description {
+            padding: 1rem 1.2rem 0.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #4a2b3a;
+            border-bottom: 1px solid #ffe2ec;
+        }
+
+        .post-actions {
+            padding: 0.8rem 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            border-bottom: 1px solid #ffe2ec;
+        }
+
+        .like-btn {
+            background: none;
+            border: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #b13e5c;
+        }
+
+        .like-btn i {
+            transition: transform 0.2s;
+        }
+
+        .like-btn:hover i {
+            transform: scale(1.15);
+        }
+
+        .likes-count {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .comment-section {
+            padding: 0.8rem 1.2rem 1rem;
+        }
+
+        .comment-list {
+            max-height: 140px;
+            overflow-y: auto;
+            margin-bottom: 0.8rem;
+            font-size: 0.85rem;
+        }
+
+        .comment-item {
+            background: #fff2f7;
+            padding: 6px 10px;
+            border-radius: 30px;
+            margin-bottom: 8px;
+            word-break: break-word;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .comment-text {
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .delete-comment {
+            background: none;
+            border: none;
+            color: #ff99bb;
+            cursor: pointer;
+            font-size: 0.7rem;
+            margin-left: 8px;
+        }
+
+        .comment-input-group {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .comment-input {
+            flex: 1;
+            border: 1px solid #ffccda;
+            border-radius: 40px;
+            padding: 8px 15px;
+            font-family: 'Quicksand', sans-serif;
+            outline: none;
+            background: white;
+        }
+
+        .comment-input:focus {
+            border-color: #e84393;
+        }
+
+        .add-comment-btn {
+            background: #ff86a3;
+            border: none;
+            border-radius: 40px;
+            padding: 0 16px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .add-comment-btn:hover {
+            background: #e84393;
+        }
+
+        /* Botón lluvia */
+        .sorpresa-area {
+            text-align: center;
+            margin: 2.5rem 0 2rem;
+        }
+
+        /* Toast */
+        .toast-message {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #e84393dd;
+            backdrop-filter: blur(12px);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 60px;
+            font-weight: bold;
+            z-index: 1000;
+            font-size: 1rem;
+            animation: fadeUp 0.4s ease forwards;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        /* Corazones flotantes */
+        .floating-heart {
+            position: fixed;
+            bottom: -20px;
+            font-size: 1.8rem;
+            pointer-events: none;
+            z-index: 999;
+            animation: floatUp 4s linear forwards;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(20deg); opacity: 0; }
+        }
+
+        footer {
+            margin-top: 3rem;
+            text-align: center;
+            padding: 1.5rem;
+            border-top: 1px solid #ffb7c5;
+            font-size: 0.9rem;
+            color: #9d5e78;
+        }
+
+        @media (max-width: 780px) {
+            .container { padding: 1rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .posts-grid { gap: 1.5rem; }
+        }
+
+        .heart-beat {
+            animation: pulse 0.6s ease;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.25); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Hero principal -->
+    <div class="hero">
+        <h1>🌷 Laura Sofía 🌷</h1>
+        <div class="tagline">
+            <i class="fas fa-stethoscope"></i> Futura doctora · Recuerdos que sanan el alma <i class="fas fa-heart" style="color:#e84393;"></i>
+        </div>
+        <div class="ubicacion">
+            <i class="fas fa-map-marker-alt"></i> Argentina · Estudiando Medicina
+        </div>
+        <div class="arg-time-card" id="argTimeContainer">
+            <i class="fas fa-clock"></i>
+            <span id="argentinaClock">Cargando hora...</span>
+            <i class="fas fa-flag-checkered"></i>
+        </div>
+    </div>
+
+    <!-- 3 mensajes de medicina y amor -->
+    <div class="frases-grid">
+        <div class="card">
+            <i class="fas fa-book-open"></i>
+            <h3>📖 Vocación</h3>
+            <p>"Estudiar medicina es un acto de amor profundo. Cada página, Laura Sofía, acerca tu corazón a sanar vidas. ✨"</p>
+        </div>
+        <div class="card">
+            <i class="fas fa-hand-holding-heart"></i>
+            <h3>🩺 Distancia</h3>
+            <p>"Aunque el mapa nos separe, tu luz cruza fronteras. Argentina tiene la dicha de tenerte, y yo la dicha de conocerte. 💞"</p>
+        </div>
+        <div class="card">
+            <i class="fas fa-brain"></i>
+            <h3>🧬 Resiliencia</h3>
+            <p>"Médica en formación, guerrera de tiempo completo. ¡Sos increíble, Laura Sofía! Cada esfuerzo hoy será una sonrisa mañana. 🌟"</p>
+        </div>
+    </div>
+
+    <!-- Frase aleatoria dinámica -->
+    <div class="frase-dinamica">
+        <h3><i class="fas fa-feather-alt"></i> Mensaje especial para vos</h3>
+        <div class="frase-box" id="randomPhraseDisplay">
+            "Tu esfuerzo en medicina construye puentes de esperanza. Sigue adelante, Argentina te necesita ❤️"
+        </div>
+        <button class="btn-amor" id="newPhraseBtn"><i class="fas fa-sync-alt"></i> Nueva frase de aliento</button>
+    </div>
+
+    <!-- GALERÍA DE FOTOS CON REACCIONES Y COMENTARIOS -->
+    <div class="instagram-gallery">
+        <h2><i class="fas fa-images"></i> Unos Recuerdos Juntos</h2>
+        <div class="gallery-sub">❤️ Dale like y deja un comentario ❤️</div>
+        <div class="posts-grid" id="postsContainer"></div>
+    </div>
+
+    <!-- Botón de lluvia de corazones -->
+    <div class="sorpresa-area">
+        <button class="btn-amor" id="extraLoveBtn" style="background-color:#b3426d;"><i class="fas fa-heart"></i> Lluvia de corazones 💖</button>
+    </div>
+
+    <footer>
+        <p><i class="fas fa-star-of-life"></i> Para Laura Sofía, con todo el cariño desde la distancia. <br> 
+        Argentina brilla más gracias a tu esfuerzo en medicina. <i class="fas fa-heart" style="color:#e84393;"></i></p>
+        <p style="margin-top: 8px;">✨ "Cada recuerdo es una pizca de eternidad. Gracias por existir." ✨</p>
+    </footer>
+</div>
+
+<script>
+    // ---------- RELOJ ARGENTINA ----------
+    function updateArgentinaClock() {
+        const options = { timeZone: "America/Argentina/Buenos_Aires", hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        const timeString = new Intl.DateTimeFormat('es-AR', options).format(new Date());
+        const clockSpan = document.getElementById('argentinaClock');
+        if (clockSpan) clockSpan.innerText = timeString;
+    }
+    setInterval(updateArgentinaClock, 1000);
+    updateArgentinaClock();
+
+    // ---------- FRASES ALEATORIAS ----------
+    const frasesBonitas = [
+        "🌸 'Cada latido que estudias hoy, será un latido salvado mañana. ¡Sos admirable, Laura Sofía!'",
+        "🩺 'Tu entrega a la medicina es poesía pura. Argentina te honra, y yo te admiro sin límites.'",
+        "💖 'Estudiante de medicina, arquitecta de sueños sanadores. ¡El mundo necesita médicas como vos!'",
+        "📚 'No es solo estudiar, es sembrar vida. Gracias por elegir el camino del corazón, Laura Sofía.'",
+        "🌻 'Cuando la noche de estudio sea larga, recordá que tus ganas curan distancias. Te quiero mucho.'",
+        "🌟 'Cada apunte, cada clase, te acerca más a transformar vidas. ¡Vos podés, futura doctora!'"
+    ];
+    const fraseDisplay = document.getElementById('randomPhraseDisplay');
+    const newPhraseBtn = document.getElementById('newPhraseBtn');
+    function setRandomPhrase() {
+        const randomIndex = Math.floor(Math.random() * frasesBonitas.length);
+        if (fraseDisplay) fraseDisplay.innerHTML = `"${frasesBonitas[randomIndex]}"`;
+    }
+    newPhraseBtn.addEventListener('click', () => {
+        setRandomPhrase();
+        showFloatingMessage("💕 Nueva frase para vos 💕", 1800);
+    });
+    setRandomPhrase();
+
+    // Toast flotante
+    let toastTimeout = null;
+    function showFloatingMessage(message, duration = 2500) {
+        const existing = document.querySelector('.toast-message');
+        if (existing) existing.remove();
+        const toast = document.createElement('div');
+        toast.className = 'toast-message';
+        toast.innerHTML = `<i class="fas fa-heart" style="margin-right: 8px;"></i> ${message}`;
+        document.body.appendChild(toast);
+        if (toastTimeout) clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => toast.remove(), duration);
+    }
+
+    // Escapar HTML
+    function escapeHtml(str) {
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    // ---------- DATOS DE LAS 4 FOTOS CON RUTAS CORRECTAS ----------
+    const postsData = [
+        {
+            id: 0,
+            imgSrc: "images/foto1.png",
+            description: "✨ Laura Sofía en Argentina ✨ Se sentía muy linda ese día, el sol abrazaba su alma de futura médica. 💖",
+            likes: 24,
+            liked: false,
+            comments: ["¡Qué bonita foto! 🌸", "Esa sonrisa ilumina todo ❤️"]
+        },
+        {
+            id: 1,
+            imgSrc: "images/foto2.png",
+            description: "🎉 Una fiesta inolvidable juntos 🎉 La noche llena de risas, baile",
+            likes: 42,
+            liked: false,
+            comments: ["Qué lindo recuerdo 🥳", "Ustedes dos son arte ✨"]
+        },
+        {
+            id: 2,
+            imgSrc: "images/foto3.png",
+            description: "✈️ 🍷 Cena especial que preparé para vos 🍷, tus comidas favoritas. Ese sabor aún lo recuerdo.",
+            likes: 53,
+            liked: false,
+            comments: ["Los abrazos sinceros no se olvidan", "El tiempo pasa 💕"]
+        },
+        {
+            id: 3,
+            imgSrc: "images/foto4.png",
+            description: "La ultima noche que saliste conmigo, la ultima noche que nos vimos, ojala buelvas prontoo.",
+            likes: 53,
+            liked: false,
+            comments: ["que vuelva pronto 😍", "tan linda jaja 🥰"]
+        }
+    ];
+
+    // Funciones para manejar datos
+    function toggleLike(postId) {
+        const post = postsData.find(p => p.id === postId);
+        if (post) {
+            if (post.liked) {
+                post.likes -= 1;
+                post.liked = false;
+            } else {
+                post.likes += 1;
+                post.liked = true;
+            }
+        }
+    }
+
+    function addComment(postId, commentText) {
+        const post = postsData.find(p => p.id === postId);
+        if (post && commentText.trim().length > 0 && commentText.length <= 120) {
+            post.comments.push(commentText.trim());
+            return true;
+        } else if (commentText.length > 120) {
+            showFloatingMessage("El comentario es muy largo (máx 120)", 1500);
+            return false;
+        }
+        return false;
+    }
+
+    function deleteComment(postId, commentIdx) {
+        const post = postsData.find(p => p.id === postId);
+        if (post && post.comments[commentIdx]) {
+            post.comments.splice(commentIdx, 1);
+        }
+    }
+
+    // Renderizar posts
+    function renderPosts() {
+        const container = document.getElementById('postsContainer');
+        if (!container) return;
+        container.innerHTML = '';
+        
+        postsData.forEach((post) => {
+            const postCard = document.createElement('div');
+            postCard.className = 'post-card';
+            
+            // Imagen con manejo de error (si no existe la imagen, muestra placeholder)
+            const imgHtml = `<img src="${post.imgSrc}" alt="Recuerdo especial" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'img-placeholder\'><i class=\'fas fa-image\'></i><span>📁 ${post.imgSrc}</span><span style=\'font-size:11px; margin-top:6px;\'>Coloca tu foto aquí</span></div>'">`;
+            
+            postCard.innerHTML = `
+                <div class="post-img">
+                    ${imgHtml}
+                </div>
+                <div class="post-description">
+                    📸 ${escapeHtml(post.description)}
+                </div>
+                <div class="post-actions">
+                    <button class="like-btn" data-id="${post.id}">
+                        <i class="fas fa-heart" style="color: ${post.liked ? '#e84393' : '#b0a0aa'}"></i>
+                        <span class="likes-count">${post.likes}</span>
+                    </button>
+                    <span><i class="far fa-comment"></i> Comentar</span>
+                </div>
+                <div class="comment-section">
+                    <div class="comment-list" id="comment-list-${post.id}">
+                        ${post.comments.map((c, idx) => `
+                            <div class="comment-item" data-comment-idx="${idx}" data-post-id="${post.id}">
+                                <span class="comment-text">💬 ${escapeHtml(c)}</span>
+                                <button class="delete-comment" data-post-id="${post.id}" data-comment-idx="${idx}"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="comment-input-group">
+                        <input type="text" class="comment-input" id="comment-input-${post.id}" placeholder="Escribe un comentario...">
+                        <button class="add-comment-btn" data-id="${post.id}">Enviar</button>
+                    </div>
+                </div>
+            `;
+            container.appendChild(postCard);
+        });
+
+        // Event listeners para likes
+        document.querySelectorAll('.like-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const postId = parseInt(btn.getAttribute('data-id'));
+                toggleLike(postId);
+                renderPosts();
+            });
+        });
+
+        // Event listeners para agregar comentarios
+        document.querySelectorAll('.add-comment-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const postId = parseInt(btn.getAttribute('data-id'));
+                const input = document.getElementById(`comment-input-${postId}`);
+                const newComment = input.value.trim();
+                if (newComment !== "") {
+                    addComment(postId, newComment);
+                    input.value = "";
+                    renderPosts();
+                    showFloatingMessage("💬 Comentario agregado 💬", 1500);
+                } else {
+                    showFloatingMessage("Escribe algo lindo 🤍", 1200);
+                }
+            });
+        });
+
+        // Event listeners para eliminar comentarios
+        document.querySelectorAll('.delete-comment').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const postId = parseInt(btn.getAttribute('data-post-id'));
+                const commentIdx = parseInt(btn.getAttribute('data-comment-idx'));
+                deleteComment(postId, commentIdx);
+                renderPosts();
+                showFloatingMessage("🗑️ Comentario eliminado", 1200);
+            });
+        });
+    }
+
+    // ---------- LLUVIA DE CORAZONES ----------
+    let heartsInterval = null;
+    let activeHearts = false;
+    let rainTimeout = null;
+    const extraLoveBtn = document.getElementById('extraLoveBtn');
+
+    function createFloatingHeart() {
+        const heart = document.createElement('div');
+        heart.classList.add('floating-heart');
+        const iconsList = ['❤️', '💖', '💗', '🌸', '🩺', '💕', '🫀', '🌷'];
+        const randomIcon = iconsList[Math.floor(Math.random() * iconsList.length)];
+        heart.innerHTML = randomIcon;
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.fontSize = (Math.random() * 1.2 + 1.2) + 'rem';
+        heart.style.animationDuration = (Math.random() * 2 + 2.5) + 's';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 4000);
+    }
+
+    function startHeartRain() {
+        if (heartsInterval) clearInterval(heartsInterval);
+        heartsInterval = setInterval(() => {
+            if (activeHearts) createFloatingHeart();
+        }, 450);
+    }
+
+    function stopHeartRain() {
+        if (heartsInterval) {
+            clearInterval(heartsInterval);
+            heartsInterval = null;
+        }
+    }
+
+    if (extraLoveBtn) {
+        extraLoveBtn.addEventListener('click', () => {
+            if (activeHearts) {
+                activeHearts = false;
+                stopHeartRain();
+                showFloatingMessage("🌧️ Lluvia de corazones detenida. El amor sigue 💖", 2000);
+                if (rainTimeout) clearTimeout(rainTimeout);
+                extraLoveBtn.style.background = "#b3426d";
+                extraLoveBtn.innerHTML = '<i class="fas fa-heart"></i> Lluvia de corazones 💖';
+            } else {
+                activeHearts = true;
+                startHeartRain();
+                showFloatingMessage("💘 ¡Corazones flotando para Laura Sofía! 💘", 2500);
+                extraLoveBtn.style.background = "#d45c82";
+                extraLoveBtn.innerHTML = '<i class="fas fa-stop"></i> Detener lluvia';
+                if (rainTimeout) clearTimeout(rainTimeout);
+                rainTimeout = setTimeout(() => {
+                    if (activeHearts) {
+                        activeHearts = false;
+                        stopHeartRain();
+                        extraLoveBtn.style.background = "#b3426d";
+                        extraLoveBtn.innerHTML = '<i class="fas fa-heart"></i> Lluvia de corazones 💖';
+                        showFloatingMessage("🌹 La lluvia de amor se detuvo... pero el cariño persiste.", 2800);
+                    }
+                }, 15000);
+            }
+        });
+    }
+
+    // Inicializar
+    renderPosts();
+
+    // Efecto al hacer click en tarjetas
+    document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('click', () => showFloatingMessage("✨ Toco tu corazón con este mensaje, Laura ✨", 1500));
+    });
+
+    // Latido periódico a los corazones
+    setInterval(() => {
+        document.querySelectorAll('.fa-heart').forEach(heart => {
+            heart.classList.add('heart-beat');
+            setTimeout(() => heart.classList.remove('heart-beat'), 600);
+        });
+    }, 3000);
+
+    // Mensaje de bienvenida
+    window.addEventListener('load', () => {
+        setTimeout(() => showFloatingMessage("🌸 ¡Laura Sofía, este álbum es para vos! Reacciona y comenta como en IG 💖", 3800), 800);
+    });
+</script>
+</body>
+</html>
